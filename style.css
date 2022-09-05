@@ -1,3 +1,8 @@
+:root {
+  --header-family: 'Signika', sans-serif;
+  --library-family: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif
+}
+
 /* fonts */
 @font-face {
   font-family: 'Material Icons';
@@ -73,7 +78,7 @@ body {
 }
 
 .header-text {
-  font-family: 'Signika', sans-serif;
+  font-family: var(--header-family);
   font-size: 36px;
   font-weight: 600;
 }
