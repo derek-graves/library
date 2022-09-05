@@ -101,7 +101,8 @@ button {
   border: 2px solid black;
   border-radius: 6px;
 
-  margin-bottom: calc(2 * var(--container-pd));
+  margin-top: var(--container-padding);
+  margin-bottom: calc(2 * var(--container-padding));
 }
 
 table {
