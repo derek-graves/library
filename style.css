@@ -1,5 +1,46 @@
+/* resets */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+
+button {
+  appearance: none;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+}
+
+.main-content {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header, .library {
+  width: 85vw;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  padding: 8px 16px;
+  border: 2px solid red;
+  border-radius: 6px;
+
+  margin: 40px 0;
+}
+
+table {
+  width: 100%;
+}
+
