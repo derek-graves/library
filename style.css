@@ -56,13 +56,12 @@ button {
   align-items: center;
 }
 
-.header, .library {
-  width: 85vw;
-}
-
 .header {
+  width: 85%;
+  height: 90px;
+
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -71,11 +70,16 @@ button {
   border: 2px solid black;
   border-radius: 6px;
 
-  margin: 40px 0;
+  margin: 30px 0;
 }
 
 .library {
+  width: 85vw;
   height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 table {
