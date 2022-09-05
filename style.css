@@ -47,7 +47,9 @@ button {
   cursor: pointer;
 }
 
-.main-content {
+/**/
+
+body {
   width: 100vw;
   height: 100vh;
 }
