@@ -10,7 +10,7 @@
   font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal;
-  font-size: 24px;  /* Preferred icon size */
+  font-size: 28px;
   display: inline-block;
   line-height: 1;
   text-transform: none;
@@ -70,6 +70,12 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.header-text {
+  font-family: 'Signika', sans-serif;
+  font-size: 36px;
+  font-weight: 600;
 }
 
 .library {
