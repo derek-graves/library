@@ -88,14 +88,6 @@ body {
   font-weight: 600;
 }
 
-.library {
-  height: 100%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 #new-book {
   font-family: var(--header-family);
   font-size: 32px;
@@ -111,7 +103,30 @@ body {
   background-color: #b3b3b3;
 }
 
+.library {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-family: var(--library-family);
+}
+
 table {
   width: 100%;
+}
+
+tr:nth-child(odd) {
+  background-color: #eee;
+}
+
+th {
+  background-color: darkgray;
+}
+
+th, td {
+  text-align: left;
+  padding: 6px 0;
 }
 
