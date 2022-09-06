@@ -109,6 +109,10 @@ body {
   background-color: lightgrey;
 }
 
+#new-book:hover {
+  background-color: #b3b3b3;
+}
+
 table {
   width: 100%;
 }
