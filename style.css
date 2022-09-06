@@ -98,13 +98,11 @@ body {
 
 #new-book {
   font-family: var(--header-family);
-  font-size: 22px;
+  font-size: 32px;
   font-weight: 400;
   
-  padding: 6px 16px;
+  padding: 4px 16px;
   border-radius: 6px;
-  margin-top: var(--container-padding);
-  margin-bottom: calc(2 * var(--container-padding));
 
   background-color: lightgrey;
 }
