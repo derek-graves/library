@@ -89,7 +89,7 @@ body {
   font-weight: 600;
 }
 
-#new-book {
+#add-book {
   font-family: var(--header-family);
   font-size: 32px;
   font-weight: 400;
@@ -100,7 +100,7 @@ body {
   background-color: lightgrey;
 }
 
-#new-book:hover {
+#add-book:hover {
   background-color: #b3b3b3;
 }
 
