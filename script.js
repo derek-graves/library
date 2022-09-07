@@ -24,5 +24,24 @@ function addBookToLibrary() {
   myLibrary.push(newBook);
 }
 
+function displayBooks() {
+  const tableBody = document.querySelector("tbody");
+
+  for (const book of myLibrary) {
+    const newRow = document.createElement("tr");
+    for (const key of Object.keys(book)) {
+      console.log(key, typeof(key));
+      const newData = document.createElement("td");
+      newData.textContent = book[key];
+      newRow.appendChild(newData);
+    }
+    tableBody.appendChild(newRow);
+  }
+}
+
 const firstBook = new Book("The Hobbit", "J.R.R. Tolkien", 295, true);
-console.log(firstBook.info());
+//console.log(firstBook.info());
+const secondBook = new Book("Ulysses", "James Joyce", 730, false);
+const thirdBook = new Book("The Brothers Karamazov", "Fyodor Dostoevsky", 840, false);
+myLibrary.push(firstBook, secondBook, thirdBook);
+displayBooks();
