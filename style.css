@@ -93,10 +93,8 @@ body {
   font-family: var(--header-family);
   font-size: 32px;
   font-weight: 400;
-  
   padding: 4px 16px;
   border-radius: var(--border-radius);
-
   background-color: lightgrey;
 }
 
@@ -106,13 +104,10 @@ body {
 
 .library {
   height: 100%;
-
   margin-top: var(--container-padding);
-
   display: flex;
   flex-direction: column;
   align-items: center;
-
   font-family: var(--library-family);
 }
 
@@ -160,3 +155,23 @@ tbody tr:last-of-type {
   border: none;
 }
 
+.modal {
+  /* display: none; */
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min-content;
+  border-radius: var(--border-radius);
+  padding: var(--container-padding);
+  background-color: lightgray;
+}
