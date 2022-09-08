@@ -90,12 +90,12 @@ body {
 }
 
 #add-book {
+  border-radius: var(--border-radius);
+  padding: 4px 16px;
+  background-color: lightgrey;
   font-family: var(--header-family);
   font-size: 32px;
   font-weight: 400;
-  padding: 4px 16px;
-  border-radius: var(--border-radius);
-  background-color: lightgrey;
 }
 
 #add-book:hover {
@@ -113,8 +113,8 @@ body {
 
 table {
   width: 100%;
-  border-collapse: collapse;
   text-align: left;
+  border-collapse: collapse;
 }
 
 tr {
@@ -138,8 +138,8 @@ tr:last-of-type td:last-of-type {
 }
 
 th {
-  background-color: darkgray;
   padding: 12px 16px;
+  background-color: darkgray;
   font-size: 20px;
 }
 
