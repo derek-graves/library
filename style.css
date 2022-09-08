@@ -175,3 +175,17 @@ tbody tr:last-of-type {
   padding: var(--container-padding);
   background-color: lightgray;
 }
+
+#close {
+  position: absolute;
+  left: 162px;
+  top: 6px;
+  color: #888;
+  font-family: var(--library-family);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+#close:hover {
+  color: #000;
+}
