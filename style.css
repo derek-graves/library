@@ -182,8 +182,9 @@ tbody tr:last-of-type {
 
 #close {
   position: absolute;
-  left: 290px;
-  top: 4px;
+  left: 97%;
+  top: 1.5%;
+  transform: translate(-97%, -1.5%);
   color: #888;
   font-family: var(--library-family);
   font-size: 18px;
