@@ -244,3 +244,18 @@ label {
 #new-pages {
   width: 50%;
 }
+
+#submit {
+  border-radius: var(--border-radius);
+  padding: 8px 24px;
+  background-color: darkgray;
+  color: #000;
+  font-family: var(--header-family);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+#submit:hover {
+  padding: 6px 22px;
+  border: 2px solid #000;
+}
