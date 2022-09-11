@@ -92,7 +92,7 @@ body {
   font-weight: 600;
 }
 
-#add-book {
+#open-modal {
   border-radius: var(--border-radius);
   padding: 4px 16px;
   background-color: lightgrey;
@@ -101,7 +101,7 @@ body {
   font-weight: 400;
 }
 
-#add-book:hover {
+#open-modal:hover {
   background-color: #b3b3b3;
 }
 
