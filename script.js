@@ -16,10 +16,10 @@ class Book {
 }
 
 function addBookToLibrary() {
-  const newTitle = document.getElementById('new-title')
-  const newAuthor = document.getElementById('new-author');
-  const newPages = document.getElementById('new-pages');
-  const newRead = document.getElementById('new-read');
+  const newTitle = document.getElementById('new-title').value;
+  const newAuthor = document.getElementById('new-author').value;
+  const newPages = document.getElementById('new-pages').value;
+  const newRead = document.getElementById('new-read').value;
   newBook = new Book(newTitle, newAuthor, newPages, newRead);
   myLibrary.push(newBook);
 }
@@ -56,8 +56,6 @@ window.onclick = (e) => {
     modal.style.display = "none";
   }
 }; 
-
- 
 
 const firstBook = new Book("The Hobbit", "J.R.R. Tolkien", 295, true);
 const secondBook = new Book("Ulysses", "James Joyce", 730, false);
