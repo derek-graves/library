@@ -38,6 +38,13 @@ function displayBooks() {
   }
 }
 
+function clearForm() {
+  document.getElementById('new-title').value = "";
+  document.getElementById('new-author').value = "";
+  document.getElementById('new-pages').value = "";
+  document.getElementById('new-read').checked = false;
+}
+
 // open and close modal
 const modal = document.querySelector(".modal");
 const openModal = document.getElementById("open-modal");
@@ -49,11 +56,13 @@ openModal.onclick = () => {
 
 closeModal.onclick = () => {
   modal.style.display = "none";
+  clearForm();
 };
 
 window.onclick = (e) => {
   if (e.target == modal) {
     modal.style.display = "none";
+    clearForm();
   }
 }; 
 
