@@ -173,6 +173,9 @@ tbody tr:last-of-type {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
   min-width: 205px;
   width: 25%;
   border-radius: var(--border-radius);
@@ -188,6 +191,9 @@ tbody tr:last-of-type {
   left: 97%;
   top: 1.5%;
   transform: translate(-97%, -1.5%);
+  -webkit-transform: translate(-97%, -1.5%);
+  -moz-transform: translate(-97%, -1.5%);
+  -ms-transform: translate(-97%, -1.5%);
   color: #888;
   font-family: var(--library-family);
   font-size: 18px;
@@ -309,6 +315,9 @@ input[type="checkbox"].toggle:checked + label::before {
 input[type="checkbox"].toggle:checked + label::after {
   content: "Yes";
   transform: translateX(calc((5 / 6) * var(--toggle-width)));
+  -webkit-transform: translate(calc((5 / 6) * var(--toggle-width)));
+  -moz-transform: translate(calc((5 / 6) * var(--toggle-width)));
+  -ms-transform: translate(calc((5 / 6) * var(--toggle-width)));
   color: #fff;
   background-color: #000;
 }
