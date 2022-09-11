@@ -38,6 +38,27 @@ function displayBooks() {
   }
 }
 
+// open and close modal
+const modal = document.querySelector(".modal");
+const openModal = document.getElementById("open-modal");
+const closeModal = document.getElementById("close");
+
+openModal.onclick = () => {
+  modal.style.display = "block";
+};
+
+closeModal.onclick = () => {
+  modal.style.display = "none";
+};
+
+window.onclick = (e) => {
+  if (e.target == modal) {
+    modal.style.display = "none";
+  }
+}; 
+
+ 
+
 const firstBook = new Book("The Hobbit", "J.R.R. Tolkien", 295, true);
 const secondBook = new Book("Ulysses", "James Joyce", 730, false);
 const thirdBook = new Book("The Brothers Karamazov", "Fyodor Dostoevsky", 840, false);
