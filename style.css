@@ -3,6 +3,9 @@
   --library-family: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
   --container-padding: 20px;
   --border-radius: 6px;
+  --toggle-width: 3em;
+  --toggle-height: calc(0.5 * var(--toggle-width));
+  --toggle-cutout-height: calc((2 / 3) * var(--toggle-height));
 }
 
 /* fonts */
@@ -248,7 +251,7 @@ label, .is-read-lable-text {
 .is-read {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: calc(0.5 * (var(--toggle-height) - var(--toggle-cutout-height)) + 4px)
 }
 
 input[type="checkbox"].toggle {
@@ -267,19 +270,20 @@ input[type="checkbox"].toggle + label {
 
 input[type="checkbox"].toggle + label::before {
   content: "";
-  width: 10em;
-  height: 2em;
+  margin-left: calc((1 / 3) * var(--toggle-width));
+  width: calc((7 / 6) * var(--toggle-width));
+  height: var(--toggle-cutout-height);
   border-radius: var(--border-radius);
-  background-color: pink;
+  background-color: darkgray;
 }
 
 input[type="checkbox"].toggle + label::after {
   position: absolute;
-  left: .1em;
-  width: 5em;
-  height: 1.9em;
+  left: 0;
+  width: var(--toggle-width);
+  height: var(--toggle-height);
   border-radius: var(--border-radius);
-  background-color: red;
+  background-color: #fff;
   content: "No";
   display: flex;
   flex-direction: row;
@@ -295,14 +299,17 @@ input[type="checkbox"].toggle:focus + label::before {
 }
 */
 
+/*
 input[type="checkbox"].toggle:checked + label::before {
   background-color: lightgreen;
 }
+*/
 
 input[type="checkbox"].toggle:checked + label::after {
   content: "Yes";
-  transform: translateX(100%);
-  background-color: green;
+  transform: translateX(calc((5 / 6) * var(--toggle-width)));
+  color: #fff;
+  background-color: #000;
 }
 
 #submit {
