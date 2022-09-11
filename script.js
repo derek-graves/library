@@ -30,7 +30,6 @@ function displayBooks() {
   for (const book of myLibrary) {
     const newRow = document.createElement("tr");
     for (const key of Object.keys(book)) {
-      console.log(key, typeof(key));
       const newData = document.createElement("td");
       newData.textContent = book[key];
       newRow.appendChild(newData);
@@ -40,7 +39,6 @@ function displayBooks() {
 }
 
 const firstBook = new Book("The Hobbit", "J.R.R. Tolkien", 295, true);
-//console.log(firstBook.info());
 const secondBook = new Book("Ulysses", "James Joyce", 730, false);
 const thirdBook = new Book("The Brothers Karamazov", "Fyodor Dostoevsky", 840, false);
 myLibrary.push(firstBook, secondBook, thirdBook);
