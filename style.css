@@ -291,6 +291,7 @@ input[type="checkbox"].toggle + label::after {
   align-items: center;
   font-family: var(--header-family);
   text-align: center;
+  transition: 250ms ease-in-out;
 }
 
 /*
