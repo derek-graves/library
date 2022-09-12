@@ -1,7 +1,8 @@
 let myLibrary = [];
 
 class Book {
-  constructor(title, author, numPages, isRead) {
+  constructor(isDisplayed, title, author, numPages, isRead) {
+    this.displayed = isDisplayed;
     this.title = title;
     this.author = author;
     this.pages = numPages;
@@ -20,7 +21,7 @@ function addBookToLibrary() {
   const newAuthor = document.getElementById('new-author').value;
   const newPages = document.getElementById('new-pages').value;
   const newRead = document.getElementById('new-read').value;
-  newBook = new Book(newTitle, newAuthor, newPages, newRead);
+  newBook = new Book(false, newTitle, newAuthor, newPages, newRead);
   myLibrary.push(newBook);
 }
 
@@ -28,13 +29,18 @@ function displayBooks() {
   const tableBody = document.querySelector("tbody");
 
   for (const book of myLibrary) {
-    const newRow = document.createElement("tr");
-    for (const key of Object.keys(book)) {
-      const newData = document.createElement("td");
-      newData.textContent = book[key];
-      newRow.appendChild(newData);
+    if (book["displayed"] === false) {
+      const newRow = document.createElement("tr");
+      for (const key of Object.keys(book)) {
+        if (!(key === "displayed")) {
+          const newData = document.createElement("td");
+          newData.textContent = book[key];
+          newRow.appendChild(newData);
+        } 
+      }
+      tableBody.appendChild(newRow);
+      book["displayed"] = true;
     }
-    tableBody.appendChild(newRow);
   }
 }
 
@@ -66,8 +72,8 @@ window.onclick = (e) => {
   }
 }; 
 
-const firstBook = new Book("The Hobbit", "J.R.R. Tolkien", 295, true);
-const secondBook = new Book("Ulysses", "James Joyce", 730, false);
-const thirdBook = new Book("The Brothers Karamazov", "Fyodor Dostoevsky", 840, false);
+const firstBook = new Book(false, "The Hobbit", "J.R.R. Tolkien", 295, true);
+const secondBook = new Book(false, "Ulysses", "James Joyce", 730, false);
+const thirdBook = new Book(false, "The Brothers Karamazov", "Fyodor Dostoevsky", 840, false);
 myLibrary.push(firstBook, secondBook, thirdBook);
 displayBooks();
