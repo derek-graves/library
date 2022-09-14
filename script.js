@@ -44,6 +44,14 @@ function displayBooks() {
   }
 }
 
+const addBookButton = document.getElementById('submit');
+addBookButton.onclick = (event) => {
+  event.preventDefault();
+  addBookToLibrary();
+  displayBooks();
+  closeModal();
+}
+
 function clearForm() {
   document.getElementById('new-title').value = "";
   document.getElementById('new-author').value = "";
@@ -53,22 +61,23 @@ function clearForm() {
 
 // open and close modal
 const modal = document.querySelector(".modal");
-const openModal = document.getElementById("open-modal");
-const closeModal = document.getElementById("close");
+const openModalButton = document.getElementById("open-modal");
+const closeModalButton = document.getElementById("close");
 
-openModal.onclick = () => {
+function openModal () {
   modal.style.display = "block";
-};
+}
 
-closeModal.onclick = () => {
+function closeModal () {
   modal.style.display = "none";
   clearForm();
-};
+}
 
-window.onclick = (e) => {
-  if (e.target == modal) {
-    modal.style.display = "none";
-    clearForm();
+openModalButton.onclick = openModal;
+closeModalButton.onclick = closeModal;
+window.onclick = (event) => {
+  if (event.target == modal) {
+    closeModal();
   }
 }; 
 
