@@ -27,17 +27,14 @@ function addBookToLibrary() {
 
 function displayBooks() {
   const tableBody = document.querySelector("tbody");
+  const notDisplayed = myLibrary.filter(book => book["displayed"] === false);
 
-  for (const book of myLibrary) {
-    if (book["displayed"] === false) {
-      const newRow = document.createElement("tr");
-      for (const key of Object.keys(book)) {
-        if (!(key === "displayed")) {
-          const newData = document.createElement("td");
-          newData.textContent = book[key];
-          newRow.appendChild(newData);
-        } 
-      }
+  for (const book of notDisplayed) {
+    const newRow = document.createElement("tr");
+    for (const key of Object.keys(book).slice(1)) {
+      const newData = document.createElement("td");
+      newData.textContent = book[key];
+      newRow.appendChild(newData);
       tableBody.appendChild(newRow);
       book["displayed"] = true;
     }
