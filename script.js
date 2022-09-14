@@ -20,7 +20,7 @@ function addBookToLibrary() {
   const newTitle = document.getElementById('new-title').value;
   const newAuthor = document.getElementById('new-author').value;
   const newPages = document.getElementById('new-pages').value;
-  const newRead = document.getElementById('new-read').value;
+  const newRead = document.getElementById('new-read').checked;
   newBook = new Book(false, newTitle, newAuthor, newPages, newRead);
   myLibrary.push(newBook);
 }
