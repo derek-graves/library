@@ -14,6 +14,10 @@ class Book {
     let bookInfo = this.title + " by " + this.author + ", " + this.pages + " pages, " + read;
     return bookInfo;
   }
+
+  changeStatus() {
+    this.read = !(this.read);
+  }
 }
 
 function addBookToLibrary() {
