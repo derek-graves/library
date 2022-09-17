@@ -124,6 +124,10 @@ tr {
   border-bottom: 1px solid black;
 }
 
+tbody tr:last-of-type {
+  border: none;
+}
+
 th:first-of-type {
   border-top-left-radius: var(--border-radius);
 }
@@ -154,9 +158,45 @@ tbody tr:nth-child(odd) {
   background-color: #eee;
 }
 
-tbody tr:last-of-type {
-  border: none;
+/* Read buttons in table */
+input[type="checkbox"].read-toggle-table {
+  opacity: 0;
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
 }
+
+input[type="checkbox"].read-toggle-table + label {
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+input[type="checkbox"].read-toggle-table + label::after {
+  position: absolute;
+  left: 0;
+  width: 4.5em;
+  height: var(--toggle-height);
+  border-radius: var(--border-radius);
+  background-color: #fff;
+  content: "Not Read";
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--header-family);
+  text-align: center;
+}
+
+input[type="checkbox"].read-toggle-table:checked + label::after {
+  content: "Read";
+  color: #fff;
+  background-color: #000;
+}
+
+/* ############################################################################# */
+
 
 .modal {
   display: none;
@@ -230,7 +270,7 @@ form {
   gap: 4px;
 }
 
-label, .is-read-lable-text {
+label, .is-read-label-text {
   font-family: var(--header-family);
   font-size: 16px;
 }
@@ -260,30 +300,30 @@ label, .is-read-lable-text {
   gap: calc(0.5 * (var(--toggle-height) - var(--toggle-cutout-height)) + 4px)
 }
 
-input[type="checkbox"].toggle {
+input[type="checkbox"].read-toggle-modal {
   opacity: 0;
   position: absolute;
   left: -9999px;
   top: -9999px;
 }
 
-input[type="checkbox"].toggle + label {
+input[type="checkbox"].read-toggle-modal + label {
   display: flex;
   align-items: center;
   position: relative;
   cursor: pointer;
 }
 
-input[type="checkbox"].toggle + label::before {
+input[type="checkbox"].read-toggle-modal + label::before {
   content: "";
-  margin-left: calc((1 / 3) * var(--toggle-width));
+  margin-left: calc((1 / 3) * var(--toggle-width)); 
   width: calc((7 / 6) * var(--toggle-width));
   height: var(--toggle-cutout-height);
   border-radius: var(--border-radius);
   background-color: darkgray;
 }
 
-input[type="checkbox"].toggle + label::after {
+input[type="checkbox"].read-toggle-modal + label::after {
   position: absolute;
   left: 0;
   width: var(--toggle-width);
@@ -300,19 +340,7 @@ input[type="checkbox"].toggle + label::after {
   transition: 250ms ease-in-out;
 }
 
-/*
-input[type="checkbox"].toggle:focus + label::before {
-  border: 1px solid black;
-}
-*/
-
-/*
-input[type="checkbox"].toggle:checked + label::before {
-  background-color: lightgreen;
-}
-*/
-
-input[type="checkbox"].toggle:checked + label::after {
+input[type="checkbox"].read-toggle-modal:checked + label::after {
   content: "Yes";
   transform: translateX(calc((5 / 6) * var(--toggle-width)));
   -webkit-transform: translate(calc((5 / 6) * var(--toggle-width)));
