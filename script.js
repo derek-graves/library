@@ -31,20 +31,36 @@ function addBookToLibrary() {
 
 function displayBooks() {
   const tableBody = document.querySelector("tbody");
-  const notDisplayed = myLibrary.filter(book => book["displayed"] === false);
+  let lastIndex = getLastBookIndex();
 
+  const notDisplayed = myLibrary.filter(book => book["displayed"] === false);
   for (const book of notDisplayed) {
     const newRow = document.createElement("tr");
-    for (const key of Object.keys(book).slice(1)) {
+    newRow.dataset.bookIndex = lastIndex++;
+
+    for (const key of Object.keys(book).slice(1,4)) {
       const newData = document.createElement("td");
       newData.textContent = book[key];
       newRow.appendChild(newData);
-      tableBody.appendChild(newRow);
-      book["displayed"] = true;
+    
+    //addStatusToggle(newRow);
+    
+    tableBody.appendChild(newRow);
+    book["displayed"] = true;
     }
   }
 }
 
+function getLastBookIndex() {
+  const tableBody = document.querySelector("tbody");
+  if (tableBody.childNodes.length === 0) {
+    return 0;
+  } else {
+    return tableBody.lastChild.dataset.bookIndex;
+  }
+}
+
+//submit and clear form
 const addBookButton = document.getElementById('submit');
 addBookButton.onclick = (event) => {
   event.preventDefault();
@@ -60,10 +76,9 @@ function clearForm() {
   document.getElementById('new-read').checked = false;
 }
 
+
 // open and close modal
-const modal = document.querySelector(".modal");
-const openModalButton = document.getElementById("open-modal");
-const closeModalButton = document.getElementById("close");
+const modal = document.querySelector(".modal")
 
 function openModal () {
   modal.style.display = "block";
@@ -74,8 +89,11 @@ function closeModal () {
   clearForm();
 }
 
+const openModalButton = document.getElementById("open-modal");
 openModalButton.onclick = openModal;
+const closeModalButton = document.getElementById("close");
 closeModalButton.onclick = closeModal;
+
 window.onclick = (event) => {
   if (event.target == modal) {
     closeModal();
