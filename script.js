@@ -64,15 +64,13 @@ function addStatusToggle (row) {
 
   const newReadToggle = document.createElement("input");
   newReadToggle.setAttribute("type", "checkbox");
-  newReadToggle.classList.add("toggle");
+  newReadToggle.classList.add("read-toggle-table");
   newReadToggle.setAttribute("id", bookID);
-  console.log(row.dataset.bookIndex); //delete later
-  console.log(myLibrary[row.dataset.bookIndex]); //delete later
   newReadToggle.checked = myLibrary[row.dataset.bookIndex]["read"];
 
   const newToggleLabel = document.createElement("label");
   newToggleLabel.setAttribute("for", bookID);
-  newToggleLabel.onclick = myLibrary[row.dataset.bookIndex].changeStatus;
+  newToggleLabel.onclick = myLibrary[row.dataset.bookIndex].changeStatus.bind(myLibrary[row.dataset.bookIndex]);
   
   const container = document.createElement("td");
   container.appendChild(newReadToggle);
@@ -86,7 +84,6 @@ const addBookButton = document.getElementById('submit');
 addBookButton.onclick = (event) => {
   event.preventDefault();
   addBookToLibrary();
-  //console.log(myLibrary[3]); //delete later
   displayBooks();
   closeModal();
 }
