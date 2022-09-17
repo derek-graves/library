@@ -42,12 +42,12 @@ function displayBooks() {
       const newData = document.createElement("td");
       newData.textContent = book[key];
       newRow.appendChild(newData);
+    }
     
-    //addStatusToggle(newRow);
-    
+    addStatusToggle(newRow);
+
     tableBody.appendChild(newRow);
     book["displayed"] = true;
-    }
   }
 }
 
@@ -58,6 +58,18 @@ function getLastBookIndex() {
   } else {
     return tableBody.lastChild.dataset.bookIndex;
   }
+}
+
+function addStatusToggle (row) {
+  const container = document.createElement("td");
+  const newReadToggle = document.createElement("input");
+  newReadToggle.setAttribute("type", "checkbox");
+  newReadToggle.classList.add("toggle");
+  const newToggleLabel = document.createElement("label");
+  container.appendChild(newReadToggle);
+  container.appendChild(newToggleLabel);
+  
+  row.appendChild(container);
 }
 
 //submit and clear form
