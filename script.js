@@ -17,7 +17,6 @@ class Book {
 
   changeStatus() {
     this.read = !(this.read);
-    console.log("CHANGED");
   }
 }
 
@@ -32,12 +31,11 @@ function addBookToLibrary() {
 
 function displayBooks() {
   const tableBody = document.querySelector("tbody");
-  let lastIndex = getLastBookIndex();
 
   const notDisplayed = myLibrary.filter(book => book["displayed"] === false);
   for (const book of notDisplayed) {
     const newRow = document.createElement("tr");
-    newRow.dataset.bookIndex = lastIndex++;
+    newRow.dataset.bookIndex = getLastBookIndex() + 1;
 
     for (const key of Object.keys(book).slice(1,4)) {
       const newData = document.createElement("td");
@@ -55,9 +53,9 @@ function displayBooks() {
 function getLastBookIndex() {
   const tableBody = document.querySelector("tbody");
   if (tableBody.childNodes.length === 0) {
-    return 0;
+    return -1;
   } else {
-    return tableBody.lastChild.dataset.bookIndex;
+    return parseInt(tableBody.lastChild.dataset.bookIndex);
   }
 }
 
@@ -68,6 +66,8 @@ function addStatusToggle (row) {
   newReadToggle.setAttribute("type", "checkbox");
   newReadToggle.classList.add("toggle");
   newReadToggle.setAttribute("id", bookID);
+  console.log(row.dataset.bookIndex); //delete later
+  console.log(myLibrary[row.dataset.bookIndex]); //delete later
   newReadToggle.checked = myLibrary[row.dataset.bookIndex]["read"];
 
   const newToggleLabel = document.createElement("label");
@@ -86,6 +86,7 @@ const addBookButton = document.getElementById('submit');
 addBookButton.onclick = (event) => {
   event.preventDefault();
   addBookToLibrary();
+  //console.log(myLibrary[3]); //delete later
   displayBooks();
   closeModal();
 }
