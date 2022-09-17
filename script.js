@@ -61,11 +61,17 @@ function getLastBookIndex() {
 }
 
 function addStatusToggle (row) {
-  const container = document.createElement("td");
+  const bookID = `book-${row.dataset.bookIndex}`
+
   const newReadToggle = document.createElement("input");
   newReadToggle.setAttribute("type", "checkbox");
   newReadToggle.classList.add("toggle");
+  newReadToggle.setAttribute("id", bookID);
+
   const newToggleLabel = document.createElement("label");
+  newToggleLabel.setAttribute("for", bookID);
+  
+  const container = document.createElement("td");
   container.appendChild(newReadToggle);
   container.appendChild(newToggleLabel);
   
