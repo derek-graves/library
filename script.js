@@ -17,6 +17,7 @@ class Book {
 
   changeStatus() {
     this.read = !(this.read);
+    console.log("CHANGED");
   }
 }
 
@@ -67,9 +68,11 @@ function addStatusToggle (row) {
   newReadToggle.setAttribute("type", "checkbox");
   newReadToggle.classList.add("toggle");
   newReadToggle.setAttribute("id", bookID);
+  newReadToggle.checked = myLibrary[row.dataset.bookIndex]["read"];
 
   const newToggleLabel = document.createElement("label");
   newToggleLabel.setAttribute("for", bookID);
+  newToggleLabel.onclick = myLibrary[row.dataset.bookIndex].changeStatus;
   
   const container = document.createElement("td");
   container.appendChild(newReadToggle);
