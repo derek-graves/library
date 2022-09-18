@@ -44,6 +44,7 @@ function displayBooks() {
     }
     
     addStatusToggle(newRow);
+    addRemoveButton(newRow);
 
     tableBody.appendChild(newRow);
     book["displayed"] = true;
@@ -77,6 +78,28 @@ function addStatusToggle (row) {
   container.appendChild(newToggleLabel);
   
   row.appendChild(container);
+}
+
+function addRemoveButton(row) {
+  const newRemoveButton = document.createElement("button");
+  newRemoveButton.textContent = "×";
+  newRemoveButton.classList.add("remove");
+  newRemoveButton.onclick = removeBook.bind(row);
+
+  const container = document.createElement("td");
+  container.appendChild(newRemoveButton);
+
+  row.appendChild(container);
+}
+
+function removeBook() {
+  //remove book visually
+  const bookRow = document.querySelector(`[data-book-index = '${this.dataset.bookIndex}']`);
+  console.log(bookRow);
+  bookRow.remove();
+
+  //remove book from library
+  myLibrary.splice(this.dataset.bookIndex, 1);
 }
 
 //submit and clear form
