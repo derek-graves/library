@@ -100,6 +100,16 @@ function removeBook() {
 
   //remove book from library
   myLibrary.splice(this.dataset.bookIndex, 1);
+
+  updateIndices();
+}
+
+function updateIndices () {
+  const rows  = [...document.querySelector("tbody").children];
+  let index = 0;
+  for (const row of rows) {
+    row.dataset.bookIndex = index++;
+  }
 }
 
 //submit and clear form
