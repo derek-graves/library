@@ -120,6 +120,19 @@ table {
   border-collapse: collapse;
 }
 
+.table-other {
+  width: 11%;
+  text-align: center;
+}
+
+.table-author {
+  width: 25%;
+}
+
+.table-title {
+  width: 42%;
+}
+
 tr {
   border-bottom: 1px solid black;
 }
