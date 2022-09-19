@@ -208,6 +208,11 @@ input[type="checkbox"].read-toggle-table:checked + label::after {
   font-weight: 400;
 }
 
+.remove:hover {
+  background-color: #000;
+  color: #fff;
+}
+
 .modal {
   display: none;
   position: fixed;
