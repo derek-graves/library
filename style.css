@@ -207,6 +207,7 @@ input[type="checkbox"].read-toggle-table:checked + label::after {
 }
 
 .remove {
+  margin-left: 25px;
   width: 24px;
   height: 24px;
   border: 2px solid black;
