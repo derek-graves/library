@@ -105,6 +105,18 @@ body {
   background-color: #b3b3b3;
 }
 
+.tools {
+  width: 36px;
+  height: 36px;
+  padding: 4px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
+.tools:hover {
+  background-color: lightgray;
+}
+
 .library {
   height: 100%;
   margin-top: var(--container-padding);
