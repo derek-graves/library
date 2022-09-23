@@ -137,6 +137,13 @@ function allRead () {
   }
 }
 
+function allUnread () {
+  for (let bookNum = 0; bookNum < myLibrary.length; bookNum++) {
+    myLibrary[bookNum["read"]] = false;
+    document.getElementById(`book-${bookNum}`).checked = false;
+  }
+}
+
 
 //submit and clear form
 const addBookButton = document.getElementById('submit');
