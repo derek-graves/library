@@ -95,7 +95,6 @@ function addRemoveButton(row) {
 function removeBook() {
   //remove book visually
   const bookRow = document.querySelector(`[data-book-index = '${this.dataset.bookIndex}']`);
-  console.log(bookRow);
   bookRow.remove();
 
   //remove book from library
@@ -109,6 +108,14 @@ function updateIndices () {
   let index = 0;
   for (const row of rows) {
     row.dataset.bookIndex = index++;
+  }
+}
+
+function clearLibrary () {
+  myLibrary = [];
+  const tbody = document.querySelector("tbody");
+  while (tbody.firstChild) {
+    tbody.removeChild(tbody.firstChild);
   }
 }
 
