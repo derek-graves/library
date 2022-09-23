@@ -111,15 +111,7 @@ function updateIndices () {
   }
 }
 
-function clearLibrary () {
-  myLibrary = [];
-  const tbody = document.querySelector("tbody");
-  while (tbody.firstChild) {
-    tbody.removeChild(tbody.firstChild);
-  }
-}
-
-//tools icon
+//tools icon visual behavior
 const tools = document.querySelector(".tools");
 tools.onclick = () => {
   if (tools.classList.contains("tools-open")) {
@@ -128,6 +120,23 @@ tools.onclick = () => {
     tools.classList.add("tools-open");
   }
 }
+
+//tools
+function clearLibrary () {
+  myLibrary = [];
+  const tbody = document.querySelector("tbody");
+  while (tbody.firstChild) {
+    tbody.removeChild(tbody.firstChild);
+  }
+}
+
+function allRead () {
+  for (let bookNum = 0; bookNum < myLibrary.length; bookNum++) {
+    myLibrary[bookNum["read"]] = true;
+    document.getElementById(`book-${bookNum}`).checked = true;
+  }
+}
+
 
 //submit and clear form
 const addBookButton = document.getElementById('submit');
