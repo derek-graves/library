@@ -111,18 +111,16 @@ body {
   padding: 4px;
   border-radius: var(--border-radius);
   cursor: pointer;
-  transition: transform 0.1s ease-in;
+  transition: transform 0.3s ease-in;
 }
 
 .tools:hover {
   background-color: lightgray;
 }
 
-.tools:active {
+.tools-open {
   transform: rotate(180deg);
-  background-color: transparent;
 }
-
 
 .library {
   height: 100%;

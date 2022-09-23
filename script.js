@@ -112,6 +112,16 @@ function updateIndices () {
   }
 }
 
+//tools icon
+const tools = document.querySelector(".tools");
+tools.onclick = () => {
+  if (tools.classList.contains("tools-open")) {
+    tools.classList.remove("tools-open");
+  }  else {
+    tools.classList.add("tools-open");
+  }
+}
+
 //submit and clear form
 const addBookButton = document.getElementById('submit');
 addBookButton.onclick = (event) => {
