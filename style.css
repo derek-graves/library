@@ -6,6 +6,7 @@
   --toggle-width: 3em;
   --toggle-height: calc(0.5 * var(--toggle-width));
   --toggle-cutout-height: calc((2 / 3) * var(--toggle-height));
+  --tools-width: 140px;
 }
 
 /* fonts */
@@ -110,8 +111,43 @@ body {
 }
 
 .tools-dropdown {
-  display: none;
+  /* display: none; */
   position: absolute;
+  left: calc(-1 * var(--tools-width) + 36px);
+  min-width: var(--tools-width);
+  border-radius: var(--border-radius);
+  background-color: #fff;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;;
+}
+
+.tools-dropdown ul {
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tools-dropdown li {
+  padding: 6px 12px;
+  font-family: var(--header-family);
+
+  cursor: pointer;
+}
+
+.tools-dropdown li:hover {
+  background-color: lightgray;
+}
+
+.tools-dropdown li:first-child {
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+}
+
+.tools-dropdown li:last-child {
+  border-bottom-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
 }
 
 .tools {
