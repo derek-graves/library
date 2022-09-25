@@ -105,6 +105,15 @@ body {
   background-color: #b3b3b3;
 }
 
+.tools-container {
+  position: relative;
+}
+
+.tools-dropdown {
+  display: none;
+  position: absolute;
+}
+
 .tools {
   width: 36px;
   height: 36px;
