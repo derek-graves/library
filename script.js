@@ -130,19 +130,23 @@ function clearLibrary () {
   }
 }
 
-function allRead () {
+function markAllRead () {
   for (let bookNum = 0; bookNum < myLibrary.length; bookNum++) {
     myLibrary[bookNum["read"]] = true;
     document.getElementById(`book-${bookNum}`).checked = true;
   }
 }
 
-function allUnread () {
+function markAllUnread () {
   for (let bookNum = 0; bookNum < myLibrary.length; bookNum++) {
     myLibrary[bookNum["read"]] = false;
     document.getElementById(`book-${bookNum}`).checked = false;
   }
 }
+
+document.getElementById("all-read").onclick = markAllRead;
+document.getElementById("all-unread").onclick = markAllUnread;
+document.getElementById("clear-library").onclick = clearLibrary;
 
 
 //submit and clear form
