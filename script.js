@@ -111,16 +111,6 @@ function updateIndices () {
   }
 }
 
-//tools icon visual behavior
-const tools = document.querySelector(".tools");
-tools.onclick = () => {
-  if (tools.classList.contains("tools-open")) {
-    tools.classList.remove("tools-open");
-  }  else {
-    tools.classList.add("tools-open");
-  }
-}
-
 //tools
 function clearLibrary () {
   myLibrary = [];

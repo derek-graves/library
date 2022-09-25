@@ -110,6 +110,14 @@ body {
   position: relative;
 }
 
+.tools {
+  width: 36px;
+  height: 36px;
+  padding: 4px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
 .tools-dropdown {
   display: none;
   position: absolute;
@@ -151,19 +159,6 @@ body {
 .tools-dropdown li:last-child {
   border-bottom-left-radius: var(--border-radius);
   border-bottom-right-radius: var(--border-radius);
-}
-
-.tools {
-  width: 36px;
-  height: 36px;
-  padding: 4px;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  transition: transform 0.3s ease-in;
-}
-
-.tools-open {
-  transform: rotate(180deg);
 }
 
 .library {
