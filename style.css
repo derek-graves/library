@@ -111,7 +111,7 @@ body {
 }
 
 .tools-dropdown {
-  /* display: none; */
+  display: none;
   position: absolute;
   left: calc(-1 * var(--tools-width) + 36px);
   min-width: var(--tools-width);
@@ -119,6 +119,10 @@ body {
   background-color: #fff;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;;
+}
+
+.tools-container:hover .tools-dropdown {
+  display: block;
 }
 
 .tools-dropdown ul {
@@ -132,7 +136,6 @@ body {
 .tools-dropdown li {
   padding: 6px 12px;
   font-family: var(--header-family);
-
   cursor: pointer;
 }
 
