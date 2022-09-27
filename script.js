@@ -48,6 +48,7 @@ function displayBooks() {
 
     tableBody.appendChild(newRow);
     book["displayed"] = true;
+    hideEmptyTable();
   }
 }
 
@@ -101,6 +102,7 @@ function removeBook() {
   myLibrary.splice(this.dataset.bookIndex, 1);
 
   updateIndices();
+  hideEmptyTable();
 }
 
 function updateIndices () {
@@ -118,6 +120,7 @@ function clearLibrary () {
   while (tbody.firstChild) {
     tbody.removeChild(tbody.firstChild);
   }
+  hideEmptyTable();
 }
 
 function markAllRead () {
@@ -137,7 +140,6 @@ function markAllUnread () {
 document.getElementById("all-read").onclick = markAllRead;
 document.getElementById("all-unread").onclick = markAllUnread;
 document.getElementById("clear-library").onclick = clearLibrary;
-
 
 //submit and clear form
 const addBookButton = document.getElementById('submit');
@@ -177,7 +179,18 @@ window.onclick = (event) => {
   if (event.target == modal) {
     closeModal();
   }
-}; 
+};
+
+//only display table when library isn't empty
+function hideEmptyTable () {
+  const tbody = document.querySelector("tbody");
+  const table = document.querySelector("table");
+  if (tbody.hasChildNodes()) {
+    table.classList.remove("hidden");
+  } else {
+    table.classList.add("hidden");
+  }
+}
 
 const firstBook = new Book(false, "The Hobbit", "J.R.R. Tolkien", 295, true);
 const secondBook = new Book(false, "Ulysses", "James Joyce", 730, false);
