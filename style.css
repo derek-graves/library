@@ -7,6 +7,12 @@
   --toggle-height: calc(0.5 * var(--toggle-width));
   --toggle-cutout-height: calc((2 / 3) * var(--toggle-height));
   --tools-width: 140px;
+
+  --row-base-color: #EAF2F8;;
+  --row-contrast-color: #D4E6F1;
+  --header-color: #7FB3D5;
+  --button-modal-color: #A9CCE3;
+  --read-color: #1A5276;
 }
 
 /* fonts */
@@ -96,14 +102,14 @@ body {
 #open-modal {
   border-radius: var(--border-radius);
   padding: 4px 16px;
-  background-color: lightgrey;
+  background-color: var(--button-modal-color);
   font-family: var(--header-family);
   font-size: 28px;
   font-weight: 400;
 }
 
 #open-modal:hover {
-  background-color: #b3b3b3;
+  background-color: var(--header-color);
 }
 
 .tools-container {
@@ -148,7 +154,7 @@ body {
 }
 
 .tools-dropdown li:hover {
-  background-color: lightgray;
+  background-color: var(--button-modal-color);
 }
 
 .tools-dropdown li:first-child {
@@ -193,7 +199,7 @@ table {
 }
 
 tr {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #000;
 }
 
 tbody tr:last-of-type {
@@ -218,7 +224,7 @@ tr:last-of-type td:last-of-type {
 
 th {
   padding: 12px 16px;
-  background-color: darkgray;
+  background-color: var(--header-color);
   font-size: 20px;
 }
 
@@ -226,8 +232,12 @@ td {
   padding: 16px;
 }
 
-tbody tr:nth-child(odd) {
-  background-color: #eee;
+tbody tr:nth-child(odd)  {
+  background-color: var(--row-base-color)
+}
+
+tbody tr:nth-child(even) {
+  background-color: var(--row-contrast-color);
 }
 
 input[type="checkbox"].read-toggle-table {
@@ -251,6 +261,7 @@ input[type="checkbox"].read-toggle-table + label::after {
   height: var(--toggle-height);
   border-radius: var(--border-radius);
   background-color: #fff;
+  color: var(--read-color);
   content: "Not Read";
   display: flex;
   flex-direction: row;
@@ -263,26 +274,27 @@ input[type="checkbox"].read-toggle-table + label::after {
 input[type="checkbox"].read-toggle-table:checked + label::after {
   content: "Read";
   color: #fff;
-  background-color: #000;
+  background-color: var(--read-color);
 }
 
 .remove {
   margin-left: 25px;
   width: 24px;
   height: 24px;
-  border: 2px solid black;
+  border: 2px solid var(--read-color);
   border-radius: var(--border-radius);
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: transparent;
+  color: var(--read-color);
   font-family: var(--header-family);
   font-size: 20px;
   font-weight: 400;
 }
 
 .remove:hover {
-  background-color: #000;
+  background-color: var(--read-color);
   color: #fff;
 }
 
@@ -308,7 +320,7 @@ input[type="checkbox"].read-toggle-table:checked + label::after {
   width: 25%;
   border-radius: var(--border-radius);
   padding: 40px 20px;
-  background-color: lightgray;
+  background-color: var(--button-modal-color);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -408,7 +420,7 @@ input[type="checkbox"].read-toggle-modal + label::before {
   width: calc((7 / 6) * var(--toggle-width));
   height: var(--toggle-cutout-height);
   border-radius: var(--border-radius);
-  background-color: darkgray;
+  background-color: var(--header-color)
 }
 
 input[type="checkbox"].read-toggle-modal + label::after {
@@ -418,6 +430,7 @@ input[type="checkbox"].read-toggle-modal + label::after {
   height: var(--toggle-height);
   border-radius: var(--border-radius);
   background-color: #fff;
+  color: var(--read-color);
   content: "No";
   display: flex;
   flex-direction: row;
@@ -435,13 +448,13 @@ input[type="checkbox"].read-toggle-modal:checked + label::after {
   -moz-transform: translate(calc((5 / 6) * var(--toggle-width)));
   -ms-transform: translate(calc((5 / 6) * var(--toggle-width)));
   color: #fff;
-  background-color: #000;
+  background-color: var(--read-color);
 }
 
 #submit {
   border-radius: var(--border-radius);
   padding: 8px 24px;
-  background-color: darkgray;
+  background-color: var(--header-color);
   color: #000;
   font-family: var(--header-family);
   font-size: 16px;
@@ -450,10 +463,10 @@ input[type="checkbox"].read-toggle-modal:checked + label::after {
 
 #submit:hover, #submit:focus {
   padding: 6px 22px;
-  border: 2px solid #000;
+  border: 2px solid var(--read-color);
 }
 
 #submit:active {
   color: #fff;
-  background-color: #000;
+  background-color: var(--read-color);
 }
