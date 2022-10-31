@@ -191,9 +191,4 @@ function hideEmptyTable () {
     table.classList.add("hidden");
   }
 }
-
-const firstBook = new Book(false, "The Hobbit", "J.R.R. Tolkien", 295, true);
-const secondBook = new Book(false, "Ulysses", "James Joyce", 730, false);
-const thirdBook = new Book(false, "The Brothers Karamazov", "Fyodor Dostoevsky", 840, false);
-myLibrary.push(firstBook, secondBook, thirdBook);
-displayBooks();
+hideEmptyTable(); //need call, otherwise table header shows on page load
