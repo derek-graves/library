@@ -54,7 +54,7 @@
 }
 
 
-/* resets */
+/* resets and view */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -69,13 +69,12 @@ button {
   cursor: pointer;
 }
 
-/**/
-
 body {
   width: 100vw;
   height: 100vh;
 }
 
+/* header */
 .header {
   box-shadow: 0px 2px 3px  rgba(0, 0, 0, 0.25);
 }
@@ -167,6 +166,7 @@ body {
   border-bottom-right-radius: var(--border-radius);
 }
 
+/* main content */
 .library {
   height: 100%;
   margin-top: var(--container-padding);
@@ -298,6 +298,7 @@ input[type="checkbox"].read-toggle-table:checked + label::after {
   color: #fff;
 }
 
+/* modal */
 .modal {
   display: none;
   position: fixed;
