@@ -1,5 +1,3 @@
-let myLibrary = [];
-
 class Book {
   constructor(isDisplayed, title, author, numPages, isRead) {
     this.displayed = isDisplayed;
@@ -11,46 +9,57 @@ class Book {
 
   info() {
     let read = this.read ? "read" : "not yet read";
-    let bookInfo = this.title + " by " + this.author + ", " + this.pages + " pages, " + read;
+    let bookInfo =
+      this.title + " by " + this.author + ", " + this.pages + " pages, " + read;
     return bookInfo;
   }
 
   changeStatus() {
-    this.read = !(this.read);
+    this.read = !this.read;
   }
 }
 
-function addBookToLibrary() {
-  const newTitle = document.getElementById('new-title').value;
-  const newAuthor = document.getElementById('new-author').value;
-  const newPages = document.getElementById('new-pages').value;
-  const newRead = document.getElementById('new-read').checked;
-  newBook = new Book(false, newTitle, newAuthor, newPages, newRead);
-  myLibrary.push(newBook);
-}
+class Library {
+  constructor() {
+    this.catalogue = [];
+  }
 
-function displayBooks() {
-  const tableBody = document.querySelector("tbody");
+  addBook() {
+    const newTitle = document.getElementById("new-title").value;
+    const newAuthor = document.getElementById("new-author").value;
+    const newPages = document.getElementById("new-pages").value;
+    const newRead = document.getElementById("new-read").checked;
+    const newBook = new Book(false, newTitle, newAuthor, newPages, newRead);
+    this.catalogue.push(newBook);
+  }
 
-  const notDisplayed = myLibrary.filter(book => book["displayed"] === false);
-  for (const book of notDisplayed) {
-    const newRow = document.createElement("tr");
-    newRow.dataset.bookIndex = getLastBookIndex() + 1;
+  displayBooks() {
+    const tableBody = document.querySelector("tbody");
 
-    for (const key of Object.keys(book).slice(1,4)) {
-      const newData = document.createElement("td");
-      newData.textContent = book[key];
-      newRow.appendChild(newData);
+    const notDisplayed = this.catalogue.filter(
+      (book) => book["displayed"] === false
+    );
+    for (const book of notDisplayed) {
+      const newRow = document.createElement("tr");
+      newRow.dataset.bookIndex = getLastBookIndex() + 1;
+
+      for (const key of Object.keys(book).slice(1, 4)) {
+        const newData = document.createElement("td");
+        newData.textContent = book[key];
+        newRow.appendChild(newData);
+      }
+
+      addStatusToggle(newRow);
+      addRemoveButton(newRow);
+
+      tableBody.appendChild(newRow);
+      book["displayed"] = true;
+      hideEmptyTable();
     }
-    
-    addStatusToggle(newRow);
-    addRemoveButton(newRow);
-
-    tableBody.appendChild(newRow);
-    book["displayed"] = true;
-    hideEmptyTable();
   }
 }
+
+let myLibrary = new Library();
 
 function getLastBookIndex() {
   const tableBody = document.querySelector("tbody");
@@ -61,8 +70,8 @@ function getLastBookIndex() {
   }
 }
 
-function addStatusToggle (row) {
-  const bookID = `book-${row.dataset.bookIndex}`
+function addStatusToggle(row) {
+  const bookID = `book-${row.dataset.bookIndex}`;
 
   const newReadToggle = document.createElement("input");
   newReadToggle.setAttribute("type", "checkbox");
@@ -72,12 +81,14 @@ function addStatusToggle (row) {
 
   const newToggleLabel = document.createElement("label");
   newToggleLabel.setAttribute("for", bookID);
-  newToggleLabel.onclick = myLibrary[row.dataset.bookIndex].changeStatus.bind(myLibrary[row.dataset.bookIndex]);
-  
+  newToggleLabel.onclick = myLibrary[row.dataset.bookIndex].changeStatus.bind(
+    myLibrary[row.dataset.bookIndex]
+  );
+
   const container = document.createElement("td");
   container.appendChild(newReadToggle);
   container.appendChild(newToggleLabel);
-  
+
   row.appendChild(container);
 }
 
@@ -95,7 +106,9 @@ function addRemoveButton(row) {
 
 function removeBook() {
   //remove book visually
-  const bookRow = document.querySelector(`[data-book-index = '${this.dataset.bookIndex}']`);
+  const bookRow = document.querySelector(
+    `[data-book-index = '${this.dataset.bookIndex}']`
+  );
   bookRow.remove();
 
   //remove book from library
@@ -105,8 +118,8 @@ function removeBook() {
   hideEmptyTable();
 }
 
-function updateIndices () {
-  const rows  = [...document.querySelector("tbody").children];
+function updateIndices() {
+  const rows = [...document.querySelector("tbody").children];
   let index = 0;
   for (const row of rows) {
     row.dataset.bookIndex = index++;
@@ -114,7 +127,7 @@ function updateIndices () {
 }
 
 //tools
-function clearLibrary () {
+function clearLibrary() {
   myLibrary = [];
   const tbody = document.querySelector("tbody");
   while (tbody.firstChild) {
@@ -123,14 +136,14 @@ function clearLibrary () {
   hideEmptyTable();
 }
 
-function markAllRead () {
+function markAllRead() {
   for (let bookNum = 0; bookNum < myLibrary.length; bookNum++) {
     myLibrary[bookNum["read"]] = true;
     document.getElementById(`book-${bookNum}`).checked = true;
   }
 }
 
-function markAllUnread () {
+function markAllUnread() {
   for (let bookNum = 0; bookNum < myLibrary.length; bookNum++) {
     myLibrary[bookNum["read"]] = false;
     document.getElementById(`book-${bookNum}`).checked = false;
@@ -142,30 +155,29 @@ document.getElementById("all-unread").onclick = markAllUnread;
 document.getElementById("clear-library").onclick = clearLibrary;
 
 //submit and clear form
-const addBookButton = document.getElementById('submit');
+const addBookButton = document.getElementById("submit");
 addBookButton.onclick = (event) => {
   event.preventDefault();
-  addBookToLibrary();
-  displayBooks();
+  myLibrary.addBook();
+  myLibrary.displayBooks();
   closeModal();
-}
+};
 
 function clearForm() {
-  document.getElementById('new-title').value = "";
-  document.getElementById('new-author').value = "";
-  document.getElementById('new-pages').value = "";
-  document.getElementById('new-read').checked = false;
+  document.getElementById("new-title").value = "";
+  document.getElementById("new-author").value = "";
+  document.getElementById("new-pages").value = "";
+  document.getElementById("new-read").checked = false;
 }
 
-
 // open and close modal
-const modal = document.querySelector(".modal")
+const modal = document.querySelector(".modal");
 
-function openModal () {
+function openModal() {
   modal.style.display = "block";
 }
 
-function closeModal () {
+function closeModal() {
   modal.style.display = "none";
   clearForm();
 }
@@ -182,7 +194,7 @@ window.onclick = (event) => {
 };
 
 //only display table when library isn't empty
-function hideEmptyTable () {
+function hideEmptyTable() {
   const tbody = document.querySelector("tbody");
   const table = document.querySelector("table");
   if (tbody.hasChildNodes()) {
