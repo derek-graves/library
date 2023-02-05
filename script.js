@@ -54,12 +54,24 @@ class Library {
 
       tableBody.appendChild(newRow);
       book["displayed"] = true;
-      hideEmptyTable();
+      this.hideEmptyTable();
+    }
+  }
+
+  //only display table when library isn't empty
+  hideEmptyTable() {
+    const tbody = document.querySelector("tbody");
+    const table = document.querySelector("table");
+    if (tbody.hasChildNodes()) {
+      table.classList.remove("hidden");
+    } else {
+      table.classList.add("hidden");
     }
   }
 }
 
 let myLibrary = new Library();
+myLibrary.hideEmptyTable(); //need call, otherwise table header shows on page load
 
 function getLastBookIndex() {
   const tableBody = document.querySelector("tbody");
@@ -192,15 +204,3 @@ window.onclick = (event) => {
     closeModal();
   }
 };
-
-//only display table when library isn't empty
-function hideEmptyTable() {
-  const tbody = document.querySelector("tbody");
-  const table = document.querySelector("table");
-  if (tbody.hasChildNodes()) {
-    table.classList.remove("hidden");
-  } else {
-    table.classList.add("hidden");
-  }
-}
-hideEmptyTable(); //need call, otherwise table header shows on page load
