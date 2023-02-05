@@ -49,7 +49,7 @@ class Library {
         newRow.appendChild(newData);
       }
 
-      addStatusToggle(newRow);
+      this.addStatusToggle(newRow);
       addRemoveButton(newRow);
 
       tableBody.appendChild(newRow);
@@ -68,6 +68,28 @@ class Library {
       table.classList.add("hidden");
     }
   }
+
+  addStatusToggle(row) {
+    const bookID = `book-${row.dataset.bookIndex}`;
+
+    const newReadToggle = document.createElement("input");
+    newReadToggle.setAttribute("type", "checkbox");
+    newReadToggle.classList.add("read-toggle-table");
+    newReadToggle.setAttribute("id", bookID);
+    newReadToggle.checked = this.catalogue[row.dataset.bookIndex]["read"];
+
+    const newToggleLabel = document.createElement("label");
+    newToggleLabel.setAttribute("for", bookID);
+    newToggleLabel.onclick = this.catalogue[
+      row.dataset.bookIndex
+    ].changeStatus.bind(this.catalogue[row.dataset.bookIndex]);
+
+    const container = document.createElement("td");
+    container.appendChild(newReadToggle);
+    container.appendChild(newToggleLabel);
+
+    row.appendChild(container);
+  }
 }
 
 let myLibrary = new Library();
@@ -80,28 +102,6 @@ function getLastBookIndex() {
   } else {
     return parseInt(tableBody.lastChild.dataset.bookIndex);
   }
-}
-
-function addStatusToggle(row) {
-  const bookID = `book-${row.dataset.bookIndex}`;
-
-  const newReadToggle = document.createElement("input");
-  newReadToggle.setAttribute("type", "checkbox");
-  newReadToggle.classList.add("read-toggle-table");
-  newReadToggle.setAttribute("id", bookID);
-  newReadToggle.checked = myLibrary[row.dataset.bookIndex]["read"];
-
-  const newToggleLabel = document.createElement("label");
-  newToggleLabel.setAttribute("for", bookID);
-  newToggleLabel.onclick = myLibrary[row.dataset.bookIndex].changeStatus.bind(
-    myLibrary[row.dataset.bookIndex]
-  );
-
-  const container = document.createElement("td");
-  container.appendChild(newReadToggle);
-  container.appendChild(newToggleLabel);
-
-  row.appendChild(container);
 }
 
 function addRemoveButton(row) {
