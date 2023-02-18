@@ -124,10 +124,10 @@ function removeBook() {
   bookRow.remove();
 
   //remove book from library
-  myLibrary.splice(this.dataset.bookIndex, 1);
+  myLibrary.catalogue.splice(this.dataset.bookIndex, 1);
 
   updateIndices();
-  hideEmptyTable();
+  myLibrary.hideEmptyTable();
 }
 
 function updateIndices() {
@@ -140,24 +140,26 @@ function updateIndices() {
 
 //tools
 function clearLibrary() {
-  myLibrary = [];
+  myLibrary.catalogue = [];
   const tbody = document.querySelector("tbody");
   while (tbody.firstChild) {
     tbody.removeChild(tbody.firstChild);
   }
-  hideEmptyTable();
+  myLibrary.hideEmptyTable();
 }
 
 function markAllRead() {
-  for (let bookNum = 0; bookNum < myLibrary.length; bookNum++) {
-    myLibrary[bookNum["read"]] = true;
+  for (let bookNum = 0; bookNum < myLibrary.catalogue.length; bookNum++) {
+    myLibrary.catalogue[bookNum["read"]] = true;
     document.getElementById(`book-${bookNum}`).checked = true;
   }
 }
 
 function markAllUnread() {
-  for (let bookNum = 0; bookNum < myLibrary.length; bookNum++) {
-    myLibrary[bookNum["read"]] = false;
+  for (let bookNum = 0; bookNum < myLibrary.catalogue.length; bookNum++) {
+    console.log("running");
+    console.log(myLibrary.catalogue);
+    myLibrary.catalogue[bookNum["read"]] = false;
     document.getElementById(`book-${bookNum}`).checked = false;
   }
 }
